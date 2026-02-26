@@ -6,7 +6,8 @@ import { map, tap } from 'rxjs'; // 데이터를 변형할 때 쓰는 도구예�
 })
 export class UserService {
   private http = inject(HttpClient);
-  private url = 'https://jsonplaceholder.typicode.com/users';
+  // private url = 'https://jsonplaceholder.typicode.com/users';
+  private url = 'http://localhost:3000/api/users';
   users = signal<any[]>([]); // 공유할 데이터 저장소
   // 유저 목록을 가져오는 함수
   // 2. 데이터를 가져와서 시그널을 업데이트하는 함수

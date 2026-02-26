@@ -1,6 +1,7 @@
 <nav style="display: flex; gap: 10px; margin-bottom: 20px">
   <a routerLink="/home">홈으로 가기</a>
   <a routerLink="/profile">프로필로 가기</a>
+  <a routerLink="/express">express로 가기</a>
 </nav>
 
 <hr />
@@ -8,8 +9,8 @@
 <router-outlet />
 
 <hr />
-<footer>공통 하단 정보 (항상 보임)</footer>
-<main>
+<footer>이곳은 푸터입니당</footer>
+<main style="display: none">
   <h1>안녕하세요, {{ title }}님!</h1>
   <h1>안녕하세요, {{ name() }}님!</h1>
   <p>드디어 앵귤러 실무 코드를 만지기 시작하셨네ss요. 🎉</p>

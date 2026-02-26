@@ -4,8 +4,9 @@ import { ProfileComponent } from './profile';
 import { NoticeComponent } from './notice'; // 👈 추가!
 import { NewsComponent } from './news'; // 👈 추가!
 import { ProfileDetailComponent } from './profile-detail'; // 프로필 상세 (새로 만듦)
+import { AppExpress } from './app-express/app-express';
 export const routes: Routes = [
-  { 
+  {
     path: 'home',
     component: HomeComponent, // Home의 틀이 되는 컴포넌트
     children: [
@@ -21,5 +22,6 @@ export const routes: Routes = [
       { path: ':id', component: ProfileDetailComponent },
     ],
   },
+  { path: 'express', component: AppExpress }, // 👈 주소와 컴포넌트 연결
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // 빈 주소면 홈으로 보냄
 ];
