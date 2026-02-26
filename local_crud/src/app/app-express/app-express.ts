@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { UserService } from '../user';
+import { ExpressUserService } from './express_user';
 import { FormsModule } from '@angular/forms'; // 👈 [(ngModel)]을 쓰기 위해 필요!
 
 @Component({
@@ -21,24 +21,34 @@ import { FormsModule } from '@angular/forms'; // 👈 [(ngModel)]을 쓰기 위�
       <hr />
 
       <ul>
-        @for (user of userService.users(); track user.id) {
-          <li>[{{ user.id }}] {{ user.name }}</li>
+        @for (user of ExpressUserService.users(); track user.id) {
+          <input #nameEditInput type="text" value="{{ user.name }} " />
+          <button (click)="onUpdateUser(user.id, nameEditInput.value)">수정</button>
+          <li>
+            [{{ user.id }}] {{ user.name }} <button (click)="onDeleteUser(user.id)">x</button>
+          </li>
         }
       </ul>
     </div>
   `,
 })
 export class AppExpress {
-  // 서비스를 public으로 가져오면 HTML에서 바로 userService.users()를 쓸 수 있어 편합니다.
-  public userService = inject(UserService);
+  // 서비스를 public으로 가져오면 HTML에서 바로 ExpressUserService.users()를 쓸 수 있어 편합니다.
+  public ExpressUserService = inject(ExpressUserService);
 
   ngOnInit() {
-    this.userService.loadUsers();
+    this.ExpressUserService.loadUsers();
   }
 
   onAddUser(newName: string) {
     if (newName.trim()) {
-      this.userService.addUser(newName);
+      this.ExpressUserService.addUser(newName);
     }
+  }
+  onDeleteUser(id: number) {
+    this.ExpressUserService.deleteUser(id);
+  }
+  onUpdateUser(id: number, name: string) {
+    this.ExpressUserService.updateUser(id, name);
   }
 }

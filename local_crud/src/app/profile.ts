@@ -27,7 +27,13 @@ export class UserCountComponent {
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, JsonPipe, ProfileDetailComponent, UserCountComponent],
+  imports: [
+    // RouterOutlet,
+    // RouterLink,
+    JsonPipe,
+    ProfileDetailComponent,
+    UserCountComponent,
+  ],
   template: `
     <h2>내 프로필 관리</h2>
     <ul>
