@@ -40,9 +40,7 @@ app.delete("/api/users/:id", (req, res) => {
     // ❌ 유저가 없으면 404 코드와 에러 메시지를 보냅니다.
     return res.status(404).json({ message: "해당 유저를 찾을 수 없습니다." });
   }
-  users = users.filter((u) => {
-    u.id !== id;
-  });
+  users = users.filter((u) => u.id !== id);
   res.send({ deletedId: id, message: "삭제 성공" });
   console.log(`delete /api/users/${id} success`);
 });
